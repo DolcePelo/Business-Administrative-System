@@ -113,28 +113,73 @@ const deleteProductFromSale = async (req, res) => {
 
 const addRentalToSale = async (req, res) => {
     const { sid, rid } = req.params;
+    const { startTime, minutes } = req.body; // Recibes la hora de inicio y los minutos desde el body
 
     try {
-        const isSaleValid = await sales.getSaleById(sid);
-        const isRentalValid = await rentals.getRentalById(rid);
+        const sale = await sales.getSaleById(sid);
+        const rental = await rentals.getRentalById(rid);
 
-        if (!isSaleValid || !isRentalValid) {
+        if (!sale || !rental) {
             return res.status(400).json({
                 status: 'error',
                 error: 'Sale or rental not found',
             });
         }
 
+        // Convertir startTime en objeto de fecha para comparaciones
+        const startDate = new Date(`1970-01-01T${startTime}:00`);
+        
+        // Buscar el rango de precios según el horario de inicio
+        const priceRange = rental.priceRanges.find(range => {
+            const rangeStart = new Date(`1970-01-01T${range.startTime}:00`);
+            const rangeEnd = new Date(`1970-01-01T${range.endTime}:00`);
+
+            if (range.endTime === "00:00") {
+                rangeEnd.setDate(rangeEnd.getDate() + 1); // Hacer que 00:00 sea el fin del día
+            }
+            
+            return startDate >= rangeStart && startDate < rangeEnd;
+        });
+
+        if (!priceRange) {
+            return res.status(400).json({
+                status: 'error',
+                error: 'No valid price range found for this time',
+            });
+        }
+
+        // Asignar el precio correcto según los minutos de alquiler
+        let price;
+        switch (minutes) {
+            case 60:
+                price = priceRange.prices.price60;
+                break;
+            case 90:
+                price = priceRange.prices.price90;
+                break;
+            case 120:
+                price = priceRange.prices.price120;
+                break;
+            default:
+                return res.status(400).json({
+                    status: 'error',
+                    error: 'Invalid rental duration',
+                });
+        }
+
+        // Actualizar la venta con el nuevo alquiler
         const newRental = {
             rental: rid,
-            hours: isRentalValid.hours,
+            quantity: 1,
+            minutes,
+            amount: price
         };
 
         const updatedSale = await sales.addRentalToSale(sid, newRental);
 
         return res.json({
             status: 'ok',
-            message: 'Rental added/updated in sale',
+            message: 'Rental added to sale',
             sale: updatedSale,
         });
     } catch (error) {
@@ -146,26 +191,23 @@ const addRentalToSale = async (req, res) => {
     }
 };
 
+
 const deleteRentalFromSale = async (req, res) => {
     const { sid, rid } = req.params;
 
     try {
-        const isSaleValid = await sales.getSaleById(sid);
-        const isRentalValid = await rentals.getRentalById(rid);
+        const sale = await sales.getSaleById(sid);
+        const rental = await rentals.getRentalById(rid);
 
-        if (!isSaleValid || !isRentalValid) {
+        if (!sale || !rental) {
             return res.status(400).json({
                 status: 'error',
                 error: 'Sale or rental not found',
             });
         }
 
-        const rentalToDelete = {
-            rental: rid,
-            hours: isRentalValid.hours,
-        };
-
-        const updatedSale = await sales.deleteRentalFromSale(sid, rentalToDelete);
+        // Lógica para eliminar el alquiler de la venta
+        const updatedSale = await sales.deleteRentalFromSale(sid, rid);
 
         return res.json({
             status: 'ok',
@@ -180,6 +222,7 @@ const deleteRentalFromSale = async (req, res) => {
         });
     }
 };
+
 
 const deleteSale = async (req, res) => {
     const { id } = req.params;

@@ -35,7 +35,7 @@ const SalesSchema = new mongoose.Schema({
                 type: Number,
                 default: 0,
             },
-            hours: {
+            minutes: {
                 type: Number,
                 default: 0,
             },

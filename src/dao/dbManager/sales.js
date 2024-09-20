@@ -111,51 +111,28 @@ export default class Sales {
         }
     }
 
-    addRentalToSale = async (sid, rentalData) => {
-        try {
-            const sale = await salesModel.findById(sid);
-            if (!sale) {
-            }
-
-            const rentalIndex = sale.rentals.findindex(rental => rental.rental.equals(rentalData.rental));
-
-            if (rentalIndex === -1) {
-                sale.rentals.push(rentalData);
-            } else {
-                sale.rentals[rentalIndex].quantity += rentalData.quantity;
-            }
-
-            return await salesModel.findByIdAndUpdate(sid, { rentals: sale.rentals }, { new: true })
-        } catch (error) {
-            console.log("Error adding rental to sale", error);
-            throw error;
-        }
-    }
-
-    deleteRentalFromSale = async (sid, rentalData) => {
-        try {
-            const sale = await salesModel.findById(sid);
-            if (!sale) {
-                throw new Error("Sale not found");
-            }
-
-            const rentalIndex = sale.rentals.findIndex(rental => rental.rental.equals(rentalData.rental));
-
-            if (rentalIndex === -1) {
-                throw new Error("Rental not found in sale");
-            } else {
-                sale.rentals[rentalIndex].quantity -= rentalData.quantity;
-                if (sale.rentals[rentalIndex].quantity <= 0) {
-                    sale.rentals.splice(rentalIndex, 1);
-                }
-            }
-
-            return await salesModel.findByIdAndUpdate(sid, { rentals: sale.rentals }, { new: true });
-        } catch (error) {
-            console.log("Error deleting rental from sale", error);
-            throw error;
-        }
+    addRentalToSale = async (saleId, rental) => {
+        const sale = await salesModel.findById(saleId);
+        sale.rentals.push(rental);
+        sale.total += rental.amount; // Actualizar el total con el monto del alquiler
+        await sale.save();
+        return sale;
     };
+    
+    deleteRentalFromSale = async (saleId, rentalId) => {
+        const sale = await salesModel.findById(saleId);
+        const rentalIndex = sale.rentals.findIndex(r => r.rental.toString() === rentalId);
+        
+        if (rentalIndex !== -1) {
+            const rental = sale.rentals[rentalIndex];
+            sale.total -= rental.amount; // Restar el monto del alquiler
+            sale.rentals.splice(rentalIndex, 1); // Eliminar el alquiler
+            await sale.save();
+        }
+    
+        return sale;
+    };
+    
 
     deleteSale = async (sid) => {
         try {
