@@ -23,7 +23,7 @@ const initializePassport = () => {
                 passReqToCallback: true,
                 usernameField: "email",
             },
-            async (req, username, passport, done) => {
+            async (req, username, password, done) => {
                 const { first_name, last_name, email, role } = req.body;
                 try {
                     console.log(username);

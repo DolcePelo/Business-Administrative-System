@@ -4,4 +4,4 @@ function auth(req, res, next) {
     else return res.sendStatus(401);
 }
 
-export default auth;
+export { auth };
