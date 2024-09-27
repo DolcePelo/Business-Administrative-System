@@ -7,6 +7,9 @@ import rentalRouter from "./routes/rental.js";
 import MongoStore from "connect-mongo";
 import session from "express-session";
 import cookieParser from "cookie-parser";
+import passport from "passport";
+import initializePassport from "./config/passport.config.js";
+import sessionRouter from "./routes/session.js";
 import { __dirname } from "./utils.js";
 
 dotenv.config();
@@ -37,10 +40,16 @@ app.use(
     })
 );
 
+// Inicializamos passport
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Routes
 app.use("/api/products", productRouter);
 app.use("/api/sales", salesRouter);
 app.use("/api/rental", rentalRouter);
+app.use("/api/session", sessionRouter);
 
 const server = app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
