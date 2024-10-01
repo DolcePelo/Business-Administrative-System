@@ -25,7 +25,7 @@ export default class Products {
         return products;
     };
 
-    getPruductById = async (id) => {
+    getProductById = async (id) => {
         let product = await productModel.findById(id).lean();
         return product;
     };

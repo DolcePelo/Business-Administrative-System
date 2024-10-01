@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {getSales, getSaleById, createSale, addProductToSale, deleteProductFromSale, addRentalToSale, deleteRentalFromSale,
-deleteSale } from "../controllers/sales.js";
+deleteSale, resolveSale } from "../controllers/sales.js";
 
 const router = Router();
 
@@ -12,6 +12,8 @@ router.delete("/:sid/product/:pid", deleteProductFromSale);
 router.post("/:sid/rental/:rid", addRentalToSale);
 router.delete("/:sid/rental/:rid", deleteRentalFromSale);
 router.delete("/:id", deleteSale);
+router.put("/:id/status", resolveSale); 
+
 
 export default router;
 

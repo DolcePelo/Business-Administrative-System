@@ -30,7 +30,7 @@ const createSale = async (req, res) => {
             console.error("Error al intentar crear el carrito.");
             return res.status(500).json({ status: "error", error: "Internal error" });
         }
-        
+
         res.json({
             status: "ok",
             message: "Sale created successfully",
@@ -47,7 +47,7 @@ const addProductToSale = async (req, res) => {
 
     try {
         const isSalesValid = await sales.getSaleById(sid);
-        const isProductValid = await products.getPruductById(pid);
+        const isProductValid = await products.getProductById(pid);
 
         if (!isSalesValid || !isProductValid) {
             return res.status(400).json({
@@ -62,7 +62,7 @@ const addProductToSale = async (req, res) => {
         };
 
         const updateSale = await sales.addProductToSale(sid, newProduct);
-        
+
         return res.json({
             status: 'ok',
             message: 'Product added/updated in sale',
@@ -81,7 +81,7 @@ const deleteProductFromSale = async (req, res) => {
     const { sid, pid } = req.params;
     try {
         const isSalesValid = await sales.getSaleById(sid);
-        const isProductValid = await products.getPruductById(pid);
+        const isProductValid = await products.getProductById(pid);
 
         if (!isSalesValid || !isProductValid) {
             return res.status(400).json({
@@ -248,6 +248,49 @@ const deleteSale = async (req, res) => {
             error: 'Internal server error',
         })
     }
+};
+
+const resolveSale = async (req, res) => {
+    const { id } = req.params;
+    const { status } = req.body;
+    try {
+        const sale = await sales.getSaleById(id);
+
+        if (!sale) {
+            return res.status(400).json({
+                message: 'Sale not found',
+            });
+        }
+
+        if (status === "confirmed") {
+            for (const saleProduct of sale.products) {
+                const product = await products.getProductById(saleProduct.product);
+
+                if (product.stock < saleProduct.quantity) {
+                    return res.status(400).json({
+                        message: 'Not enough stock',
+                    });
+                }
+
+                product.stock -= saleProduct.quantity;
+                await products.updateProduct(product._id, product);
+            }
+        }
+        
+        const updatedSale = await sales.resolveSale(id, { status });
+
+        return res.json({
+            status: 'ok',
+            message: `Sale ${status}`,
+            data: updatedSale
+        });
+    } catch (error) {
+        console.error("Error resolving sale", error);
+        return res.status(500).json({
+            status: 'error',
+            error: 'Internal server error',
+        })
+    }
 }
 
-export { getSales, getSaleById, createSale, addProductToSale, deleteProductFromSale, addRentalToSale, deleteRentalFromSale, deleteSale }
+export { getSales, getSaleById, createSale, addProductToSale, deleteProductFromSale, addRentalToSale, deleteRentalFromSale, deleteSale, resolveSale }
