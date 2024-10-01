@@ -4,7 +4,10 @@ const salesCollection = "sales";
 
 const SalesSchema = new mongoose.Schema({
     code: String,
-    status: String,
+    status: {
+        type: String,
+        default: "pending"
+    },
     products: {
         type: [{
             product: {

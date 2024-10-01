@@ -36,8 +36,7 @@ export default class Sales {
 
     resolveSale = async (id, order) => {
         try {
-            const result = await salesModel.findByIdAndUpdate(id, order)
-            return result;
+            return await salesModel.findByIdAndUpdate(id, order, { new: true });
         } catch (error) {
             console.log("Error al resolver la venta", error);
             throw error;
