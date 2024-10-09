@@ -1,0 +1,4 @@
+[2024-10-09T16:52:32.414Z] [31merror[39m: Faltan campos requeridos para crear el producto
+[2024-10-09T16:52:32.424Z] [32minfo[39m: POST /api/products/ 400 7ms
+[2024-10-09T16:53:49.838Z] [32minfo[39m: POST /api/products/ 200 69ms
+[2024-10-09T16:53:55.284Z] [32minfo[39m: GET /api/products/ 200 44ms

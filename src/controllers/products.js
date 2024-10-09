@@ -1,4 +1,5 @@
 import productService from "../dao/dbManager/products.js";
+import logger from "../config/logger.js";
 
 const products = new productService();
 
@@ -32,6 +33,15 @@ const getProductById = async (req, res) => {
 const saveProduct = async (req, res) => {
     const { code, name, description, price, category, stock } = req.body;
     try {
+        if (!code || !name || !price || stock == null ) {
+            const validationError = "Faltan campos requeridos para crear el producto";
+            logger.error(validationError);
+            return res.status(400).json({
+                status: 400,
+                message: validationError
+            });
+        }
+
         const response = await products.saveProduct({
             code,
             name,
@@ -40,15 +50,21 @@ const saveProduct = async (req, res) => {
             category,
             stock
         });
+
         res.json({
             status: 201,
             message: "Product created successfully",
             data: response
         })
+
     } catch (error) {
-        console.log("Error creating product")
+        logger.error("Error al crear el producto", error);
+        res.status(500).json({
+            status: 500,
+            message: "Error al crear el producto"
+        });
     }
-} 
+};
 
 const updateProduct = async (req, res) => {
     const { id } = req.params;
