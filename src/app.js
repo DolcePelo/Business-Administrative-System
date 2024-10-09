@@ -11,6 +11,8 @@ import passport from "passport";
 import initializePassport from "./config/passport.config.js";
 import sessionRouter from "./routes/session.js";
 import { __dirname } from "./utils.js";
+import logger from "./config/logger.js";
+import expressWinston from "express-winston";
 
 dotenv.config();
 
@@ -25,6 +27,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 app.use(cookieParser(COOKIESECRET));
+app.use(expressWinston.logger({
+    winstonInstance: logger,
+    meta: true,
+    msg: "HTTP {{req.method}} {{req.url}}",
+    expressFormat: true,
+    colorize: false,
+    ignoreRoute: function (req, res) { return false; }
+}));
 
 // Session setup
 app.use(
