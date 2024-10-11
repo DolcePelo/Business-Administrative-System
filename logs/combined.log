@@ -2,3 +2,9 @@
 [2024-10-09T16:52:32.424Z] [32minfo[39m: POST /api/products/ 400 7ms
 [2024-10-09T16:53:49.838Z] [32minfo[39m: POST /api/products/ 200 69ms
 [2024-10-09T16:53:55.284Z] [32minfo[39m: GET /api/products/ 200 44ms
+[2024-10-11T21:55:57.523Z] [32minfo[39m: POST /api/rentals/ 404 3ms
+[2024-10-11T21:56:39.032Z] [32minfo[39m: POST /api/rental/ 201 85ms
+[2024-10-11T21:57:11.727Z] [31merror[39m: Faltan campos requeridos para crear el alquiler
+[2024-10-11T21:57:11.729Z] [32minfo[39m: POST /api/rental/ 400 1ms
+[2024-10-11T21:57:26.685Z] [31merror[39m: Faltan campos requeridos para crear el alquiler
+[2024-10-11T21:57:26.686Z] [32minfo[39m: POST /api/rental/ 400 2ms

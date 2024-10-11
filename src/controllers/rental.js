@@ -1,4 +1,5 @@
 import rentalService from "../dao/dbManager/rental.js";
+import logger from "../config/logger.js";
 
 const rentals = new rentalService();
 
@@ -50,12 +51,21 @@ const getRentalById = async (req, res) => {
 const saveRental = async (req, res) => {
     const { courtType, courtNumber, priceRanges } = req.body;
     try {
+        if (!courtType || !courtNumber || !priceRanges) {
+            const validationError = "Faltan campos requeridos para crear el alquiler";
+            logger.error(validationError)
+            return res.status(400).json({
+                status: 400,
+                message: validationError
+            })
+        }
+
         const newRental = {
             courtType,
             courtNumber,
             priceRanges
         };
-        
+
         const response = await rentals.saveRental(newRental);
         res.status(201).json({
             status: 201,
@@ -63,10 +73,10 @@ const saveRental = async (req, res) => {
             data: response
         });
     } catch (error) {
-        console.log("Error creating rental: ", error);
+        logger.error("Error al crear el alquiler: ", error);
         res.status(500).json({
             status: 500,
-            message: "Error creating rental"
+            message: "Error al crear el alquiler"
         });
     }
 };
