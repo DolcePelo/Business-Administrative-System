@@ -8,3 +8,16 @@
 [2024-10-11T21:57:11.729Z] [32minfo[39m: POST /api/rental/ 400 1ms
 [2024-10-11T21:57:26.685Z] [31merror[39m: Faltan campos requeridos para crear el alquiler
 [2024-10-11T21:57:26.686Z] [32minfo[39m: POST /api/rental/ 400 2ms
+[2024-10-11T22:11:51.595Z] [32minfo[39m: GET /api/sales/ 200 81ms
+[2024-10-11T22:12:10.486Z] [32minfo[39m: POST /api/sales/ 200 68ms
+[2024-10-11T22:12:19.283Z] [32minfo[39m: GET /api/sales/ 200 56ms
+[2024-10-11T22:14:58.680Z] [32minfo[39m: GET /api/products/ 200 58ms
+[2024-10-11T22:15:16.546Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/product/66ea04c5b25476f3247600a8 200 303ms
+[2024-10-11T22:15:40.327Z] [31merror[39m: Venta o Producto no encontrado
+[2024-10-11T22:15:40.329Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/product/66ea04c5b25476f3247600a0 400 100ms
+[2024-10-11T22:45:55.066Z] [31merror[39m: Venta o Producto no encontrado
+[2024-10-11T22:45:55.074Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/product/66ea04c5b25476f3247600a0 400 126ms
+[2024-10-11T22:46:03.427Z] [31merror[39m: Venta o Producto no encontrado
+[2024-10-11T22:46:03.429Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/product/66ea04c5b25476f3247600a0 400 111ms
+[2024-10-11T22:46:22.227Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/product/66ea04c5b25476f3247600a8 200 274ms
+[2024-10-11T22:51:39.020Z] [32minfo[39m: GET /api/sales/ 200 70ms
