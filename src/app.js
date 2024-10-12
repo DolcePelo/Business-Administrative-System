@@ -13,8 +13,11 @@ import sessionRouter from "./routes/session.js";
 import { __dirname } from "./utils.js";
 import logger from "./config/logger.js";
 import expressWinston from "express-winston";
+import connectDB from "./config/db.js";
 
 dotenv.config();
+
+connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -64,13 +67,4 @@ app.use("/api/session", sessionRouter);
 const server = app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-
-mongoose
-    .connect(DB_URL)
-    .then(() => {
-        console.log("Connected to MongoDB" + DB_URL);
-    })
-    .catch((error) => {
-        console.error("Error connecting to MongoDB:", error);
-    })
 
