@@ -21,3 +21,19 @@
 [2024-10-11T22:46:03.429Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/product/66ea04c5b25476f3247600a0 400 111ms
 [2024-10-11T22:46:22.227Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/product/66ea04c5b25476f3247600a8 200 274ms
 [2024-10-11T22:51:39.020Z] [32minfo[39m: GET /api/sales/ 200 70ms
+[2024-10-11T22:53:13.143Z] [32minfo[39m: DELETE /api/sales/6709a2ba76a2c795b1e12099/product/66ea04c5b25476f3247600a8 200 307ms
+[2024-10-11T22:53:18.592Z] [31merror[39m: Venta o Producto no encontrado
+[2024-10-11T22:53:18.593Z] [32minfo[39m: DELETE /api/sales/6709a2ba76a2c795b1e12099/product/66ea04c5b25476f3247600a0 400 106ms
+[2024-10-11T22:54:04.986Z] [32minfo[39m: GET /api/rental/ 200 370ms
+[2024-10-11T22:54:17.091Z] [31merror[39m: No se encontró un rango de precios para la fecha de inicio
+[2024-10-11T22:54:17.092Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/rental/66eb8b60535d46942e37d4ba 400 106ms
+[2024-10-11T22:56:37.996Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/rental/66eb8b60535d46942e37d4ba 400 106ms
+[2024-10-11T22:57:15.843Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/rental/66eb8b60535d46942e37d4ba 400 103ms
+[2024-10-11T22:57:31.525Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/rental/66eb8b60535d46942e37d4ba 400 133ms
+[2024-10-11T22:57:44.710Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/rental/66eb8b60535d46942e37d4ba 500 181ms
+[2024-10-12T00:25:34.305Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/rental/66eb8b60535d46942e37d4ba 500 760ms
+[2024-10-12T00:32:28.696Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/rental/66eb8b60535d46942e37d4ba 500 210ms
+[2024-10-12T00:33:41.387Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/rental/66eb8b60535d46942e37d4ba 500 507ms
+[2024-10-12T00:39:02.686Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/rental/66eb8b60535d46942e37d4ba 200 275ms
+[2024-10-12T00:40:47.345Z] [31merror[39m: Venta o Renta no encontrada
+[2024-10-12T00:40:47.348Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/rental/66eb8b60535d46942e37d4b8 400 111ms

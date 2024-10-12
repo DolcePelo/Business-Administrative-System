@@ -116,7 +116,7 @@ export default class Sales {
             if (!sale) {
             }
 
-            const rentalIndex = sale.rentals.findindex(rental => rental.rental.equals(rentalData.rental));
+            const rentalIndex = sale.rentals.findIndex(rental => rental.rental.equals(rentalData.rental));
 
             if (rentalIndex === -1) {
                 sale.rentals.push(rentalData);
