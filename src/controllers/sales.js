@@ -1,6 +1,7 @@
 import salesService from "../dao/dbManager/sales.js";
 import productService from "../dao/dbManager/products.js";
 import rentalService from "../dao/dbManager/rental.js";
+import logger from "../config/logger.js";
 
 const sales = new salesService();
 const products = new productService();
@@ -27,7 +28,7 @@ const createSale = async (req, res) => {
         const response = await sales.createSale(req.body);
 
         if (!response || !response._id) {
-            console.error("Error al intentar crear el carrito.");
+            logger.error("Error al intentar crear el carrito.");
             return res.status(500).json({ status: "error", error: "Internal error" });
         }
 
@@ -50,9 +51,11 @@ const addProductToSale = async (req, res) => {
         const isProductValid = await products.getProductById(pid);
 
         if (!isSalesValid || !isProductValid) {
+            const validationError = "Venta o Producto no encontrado";
+            logger.error(validationError);
             return res.status(400).json({
                 status: 'error',
-                error: 'Sale or product not found',
+                message: validationError,
             });
         }
 
@@ -69,7 +72,7 @@ const addProductToSale = async (req, res) => {
             sale: updateSale,
         });
     } catch (error) {
-        console.error("Error adding product to sale", error);
+        logger.error("Error adding product to sale", error);
         return res.status(500).json({
             status: 'error',
             error: 'Internal server error',
@@ -84,9 +87,11 @@ const deleteProductFromSale = async (req, res) => {
         const isProductValid = await products.getProductById(pid);
 
         if (!isSalesValid || !isProductValid) {
+            const validationError = "Venta o Producto no encontrado";
+            logger.error(validationError);
             return res.status(400).json({
                 status: 'error',
-                error: 'Sale or product not found',
+                message: validationError,
             });
         }
 
@@ -103,7 +108,7 @@ const deleteProductFromSale = async (req, res) => {
             sale: updateSale,
         });
     } catch (error) {
-        console.error("Error deleting product from sale", error);
+        logger.error("Error deleting product from sale", error);
         return res.status(500).json({
             status: 'error',
             error: 'Internal server error',
@@ -120,9 +125,11 @@ const addRentalToSale = async (req, res) => {
         const rental = await rentals.getRentalById(rid);
 
         if (!sale || !rental) {
+            const validationError = "Venta o Renta no encontrada";
+            logger.error(validationError);
             return res.status(400).json({
                 status: 'error',
-                error: 'Sale or rental not found',
+                message: validationError,
             });
         }
 
@@ -142,9 +149,11 @@ const addRentalToSale = async (req, res) => {
         });
 
         if (!priceRange) {
+            const validationError = "No se encontró un rango de precios para la fecha de inicio";
+            logger.error(validationError);
             return res.status(400).json({
                 status: 'error',
-                error: 'No valid price range found for this time',
+                message: validationError,
             });
         }
 
@@ -200,9 +209,11 @@ const deleteRentalFromSale = async (req, res) => {
         const rental = await rentals.getRentalById(rid);
 
         if (!sale || !rental) {
+            const validationError = "Venta o Renta no encontrada";
+            logger.error(validationError);
             return res.status(400).json({
                 status: 'error',
-                error: 'Sale or rental not found',
+                message: validationError,
             });
         }
 
