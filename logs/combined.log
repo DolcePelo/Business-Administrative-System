@@ -37,3 +37,6 @@
 [2024-10-12T00:39:02.686Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/rental/66eb8b60535d46942e37d4ba 200 275ms
 [2024-10-12T00:40:47.345Z] [31merror[39m: Venta o Renta no encontrada
 [2024-10-12T00:40:47.348Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/rental/66eb8b60535d46942e37d4b8 400 111ms
+[2024-10-12T01:15:14.461Z] [31merror[39m: Venta o Renta no encontrada
+[2024-10-12T01:15:14.480Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/rental/66eb8b60535d46942e37d4b8 400 156ms
+[2024-10-12T01:15:20.566Z] [32minfo[39m: POST /api/sales/6709a2ba76a2c795b1e12099/rental/66eb8b60535d46942e37d4ba 200 824ms
