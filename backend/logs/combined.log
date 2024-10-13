@@ -90,3 +90,25 @@
 [2024-10-13T18:49:03.049Z] [32minfo[39m: DELETE /api/rental/67099f166d83f6c6ef24686f 200 59ms
 [2024-10-13T18:49:35.021Z] [32minfo[39m: GET /api/rental/66eb8e0e94e06aea771d8b30 200 50ms
 [2024-10-13T18:49:54.960Z] [32minfo[39m: POST /api/rental/ 201 79ms
+[2024-10-13T18:50:54.487Z] [32minfo[39m: GET /api/sales/ 200 254ms
+[2024-10-13T18:51:13.072Z] [32minfo[39m: GET /api/products/ 200 58ms
+[2024-10-13T18:51:25.317Z] [31merror[39m: Venta o Producto no encontrado
+[2024-10-13T18:51:25.318Z] [32minfo[39m: POST /api/sales/66ea04c5b25476f3247600a8/product/66ea06bbb25476f3247600b5 400 107ms
+[2024-10-13T18:51:56.010Z] [32minfo[39m: POST /api/sales/66eb5c14904c9142f8bfa96e/product/66ea06bbb25476f3247600b5 200 275ms
+[2024-10-13T18:52:07.334Z] [32minfo[39m: POST /api/sales/66eb5c14904c9142f8bfa96e/product/66ea06bbb25476f3247600b5 200 273ms
+[2024-10-13T18:52:12.061Z] [32minfo[39m: DELETE /api/sales/66eb5c14904c9142f8bfa96e/product/66ea06bbb25476f3247600b5 200 264ms
+[2024-10-13T18:52:16.834Z] [32minfo[39m: DELETE /api/sales/66eb5c14904c9142f8bfa96e/product/66ea06bbb25476f3247600b5 200 259ms
+[2024-10-13T18:52:23.170Z] [32minfo[39m: DELETE /api/sales/66eb5c14904c9142f8bfa96e/product/66ea06bbb25476f3247600b5 200 262ms
+[2024-10-13T18:52:39.929Z] [32minfo[39m: DELETE /api/sales/66eb5c14904c9142f8bfa96e/rental/66eb8e0994e06aea771d8b28 200 507ms
+[2024-10-13T18:52:48.010Z] [32minfo[39m: DELETE /api/sales/66eb5c14904c9142f8bfa96e/rental/66eb8e0994e06aea771d8b28 200 222ms
+[2024-10-13T18:53:09.995Z] [32minfo[39m: POST /api/sales/66eb5c14904c9142f8bfa96e/rental/670c1652cf9fdfe6facb56d3 200 549ms
+[2024-10-13T18:53:56.468Z] [31merror[39m: Venta o Producto no encontrado
+[2024-10-13T18:53:56.469Z] [32minfo[39m: POST /api/sales/66eb5c14904c9142f8bfa96e/product/66ea04c5b25476f3247600a8 400 101ms
+[2024-10-13T18:54:12.327Z] [32minfo[39m: POST /api/sales/66eb5c14904c9142f8bfa96e/product/66ea04e2b25476f3247600aa 200 268ms
+[2024-10-13T18:54:23.294Z] [32minfo[39m: POST /api/sales/66eb5c14904c9142f8bfa96e/product/66ea04e2b25476f3247600aa 200 258ms
+[2024-10-13T18:54:44.135Z] [32minfo[39m: DELETE /api/sales/66eb5c14904c9142f8bfa96e/rental/670c1652cf9fdfe6facb56d3 200 212ms
+[2024-10-13T18:55:04.505Z] [31merror[39m: Venta o Producto no encontrado
+[2024-10-13T18:55:04.507Z] [32minfo[39m: POST /api/sales/66eb5c14904c9142f8bfa96e/product/66ea04c5b25476f3247600a8 400 113ms
+[2024-10-13T18:55:18.157Z] [32minfo[39m: POST /api/sales/66eb5c14904c9142f8bfa96e/product/66ea05d8b25476f3247600ae 200 271ms
+[2024-10-13T18:55:41.540Z] [32minfo[39m: POST /api/sales/66eb5c14904c9142f8bfa96e/rental/670c1652cf9fdfe6facb56d3 200 211ms
+[2024-10-13T18:55:52.802Z] [32minfo[39m: POST /api/sales/66eb5c14904c9142f8bfa96e/rental/670c1652cf9fdfe6facb56d3 200 219ms
