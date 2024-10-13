@@ -75,3 +75,7 @@
 [2024-10-12T06:25:02.989Z] [32minfo[39m: GET /api/rental/ 200 57ms
 [2024-10-12T06:25:19.228Z] [32minfo[39m: POST /api/sales/66eb5c14904c9142f8bfa96e/rental/66eb8b7d535d46942e37d4c1 200 538ms
 [2024-10-12T06:25:28.967Z] [32minfo[39m: DELETE /api/sales/66eb5c14904c9142f8bfa96e/rental/66eb8b7d535d46942e37d4c1 200 230ms
+[2024-10-12T06:49:49.374Z] [31merror[39m: Faltan campos requeridos para crear el producto
+[2024-10-12T06:49:49.400Z] [32minfo[39m: POST /api/products/ 400 25ms
+[2024-10-12T06:50:01.201Z] [31merror[39m: Faltan campos requeridos para crear el producto
+[2024-10-12T06:50:01.204Z] [32minfo[39m: POST /api/products/ 400 1ms
