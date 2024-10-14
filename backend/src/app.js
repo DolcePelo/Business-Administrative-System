@@ -14,6 +14,7 @@ import { __dirname } from "./utils.js";
 import logger from "./config/logger.js";
 import expressWinston from "express-winston";
 import connectDB from "./config/db.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ const DB_URL = process.env.DB_URL || "mongodb:localhost:27017/buffet";
 
 
 // Middlewares
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));

@@ -1,0 +1,24 @@
+import { Link } from 'react-router-dom';
+
+const Navbar = () => {
+    return (
+        <nav>
+            <ul>
+                <li>
+                    <Link to="/">Inicio</Link>
+                </li>
+                <li>
+                    <Link to="/products">Productos</Link>
+                </li>
+                <li>
+                    <Link to="/sales">Ventas</Link>
+                </li>
+                <li>
+                    <Link to="/rentals">Alquileres</Link>
+                </li>
+            </ul>
+        </nav>
+    );
+};
+
+export default Navbar;

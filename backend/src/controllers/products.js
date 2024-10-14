@@ -4,15 +4,17 @@ import logger from "../config/logger.js";
 const products = new productService();
 
 const getProducts = async (req, res) => {
+    const { page = 1, limit = 10 } = req.query;
     try {
-        const productsList = await products.getProducts();
-        res.json({
-            status: 200,
+        const productsList = await products.getProducts(Number(page), Number(limit));
+        res.status(200).json({
             message: "Products retrieved successfully",
             data: productsList
         });
     } catch (error) {
-        console.log("Error: ", error);
+        res.status(500).json({
+            message: "Error al obtener los productos"
+        }); 
     }
 }
 
