@@ -302,3 +302,4 @@
 [2024-10-16T00:36:36.946Z] [32minfo[39m: GET /api/rental?page=1 304 61ms
 [2024-10-16T00:39:10.423Z] [32minfo[39m: GET /api/rental?page=1 304 55ms
 [2024-10-16T00:46:56.497Z] [32minfo[39m: GET /api/rental?page=2 304 59ms
+[2024-10-16T00:58:13.222Z] [32minfo[39m: POST /api/sales/ 200 110ms
