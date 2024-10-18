@@ -14,7 +14,7 @@ const getProducts = async (req, res) => {
     } catch (error) {
         res.status(500).json({
             message: "Error al obtener los productos"
-        }); 
+        });
     }
 }
 
@@ -35,7 +35,7 @@ const getProductById = async (req, res) => {
 const saveProduct = async (req, res) => {
     const { code, name, description, price, category, stock } = req.body;
     try {
-        if (!code || !name || !price || stock == null ) {
+        if (!code || !name || !price || stock == null) {
             const validationError = "Faltan campos requeridos para crear el producto";
             logger.error(validationError);
             return res.status(400).json({
@@ -86,6 +86,23 @@ const updateProduct = async (req, res) => {
     }
 }
 
+const updateStock = async (req, res) => {
+    const { id } = req.params;
+    const { stock } = req.body;
+    try {
+        const product = await products.getProductById(id);
+        const newStock = product.stock + stock;
+        const response = await products.updateStock(id, { stock: newStock });
+        res.json({
+            status: 200,
+            message: "Stock updated successfully",
+            data: response
+        })
+    } catch (error) {
+        console.error("Error updating stock", error)
+    }
+}
+
 const deleteProduct = async (req, res) => {
     const { id } = req.params;
     try {
@@ -100,4 +117,4 @@ const deleteProduct = async (req, res) => {
     }
 }
 
-export { getProducts, getProductById, saveProduct, updateProduct, deleteProduct }
+export { getProducts, getProductById, saveProduct, updateProduct, updateStock, deleteProduct }

@@ -50,6 +50,15 @@ export default class Products {
         }
     };
 
+    updateStock = async (id, stock) => {
+        try {
+            const result = await productModel.findByIdAndUpdate(id,  stock , { new: true });
+            return result;
+        } catch (error) {
+            console.error("Error al sumar stock el Producto" + error);
+        }
+    }
+
     deleteProduct = async (id) => {
         const result = await productModel.deleteOne({ _id: id });
         return result;

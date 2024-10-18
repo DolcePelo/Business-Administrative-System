@@ -327,3 +327,13 @@
 [2024-10-18T14:17:40.080Z] [32minfo[39m: GET /api/products/ 200 48ms
 [2024-10-18T14:18:47.379Z] [32minfo[39m: PUT /api/products/66ea04e2b25476f3247600aa 200 57ms
 [2024-10-18T14:18:54.765Z] [32minfo[39m: GET /api/products/ 200 54ms
+[2024-10-18T15:11:43.697Z] [32minfo[39m: GET /api/products/ 200 49ms
+[2024-10-18T15:18:15.513Z] [32minfo[39m: PUT /api/products/66ea04e2b25476f3247600aa/stock 200 59ms
+[2024-10-18T15:18:44.048Z] [32minfo[39m: PUT /api/products/66ea04e2b25476f3247600aa/stock 200 42ms
+[2024-10-18T15:18:53.124Z] [32minfo[39m: GET /api/products/66ea04e2b25476f3247600aa 200 39ms
+[2024-10-18T15:20:13.527Z] [32minfo[39m: PUT /api/products/66ea04e2b25476f3247600aa/stock 200 61ms
+[2024-10-18T15:20:21.685Z] [32minfo[39m: GET /api/products/66ea04e2b25476f3247600aa/ 200 40ms
+[2024-10-18T15:21:04.082Z] [32minfo[39m: PUT /api/products/66ea04e2b25476f3247600aa/stock 200 97ms
+[2024-10-18T15:21:07.133Z] [32minfo[39m: PUT /api/products/66ea04e2b25476f3247600aa/stock 200 86ms
+[2024-10-18T15:21:16.857Z] [32minfo[39m: GET /api/products/66ea04e2b25476f3247600aa 200 39ms
+[2024-10-18T15:21:56.794Z] [32minfo[39m: PUT /api/products/66ea04e2b25476f3247600aa/stock 200 87ms
