@@ -42,10 +42,14 @@ export default class Products {
     };
 
     updateProduct = async (id, product) => {
-        const result = await productModel.updateOne({ _id: id }, product);
-        return result;
+        try {
+            const result = await productModel.findByIdAndUpdate(id, product, { new: true });
+            return result;
+        } catch (error) {
+            console.error("Error al resolver el Producto" + error);
+        }
     };
-    
+
     deleteProduct = async (id) => {
         const result = await productModel.deleteOne({ _id: id });
         return result;
