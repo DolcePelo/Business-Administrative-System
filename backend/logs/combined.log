@@ -324,3 +324,6 @@
 [2024-10-16T15:09:37.570Z] [32minfo[39m: POST /api/sales 200 52ms
 [2024-10-16T15:09:47.407Z] [32minfo[39m: POST /api/sales 200 46ms[2024-10-18T13:49:38.972Z] [32minfo[39m: PUT /api/sales/66fc7dd4a101be3c1f3be64d/status 200 97ms
 [2024-10-18T13:49:50.678Z] [32minfo[39m: GET /api/sales/ 200 46ms
+[2024-10-18T14:17:40.080Z] [32minfo[39m: GET /api/products/ 200 48ms
+[2024-10-18T14:18:47.379Z] [32minfo[39m: PUT /api/products/66ea04e2b25476f3247600aa 200 57ms
+[2024-10-18T14:18:54.765Z] [32minfo[39m: GET /api/products/ 200 54ms
