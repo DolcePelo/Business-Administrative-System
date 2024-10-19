@@ -38,12 +38,82 @@ const ProductForm = ({ refreshProducts }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" name="code" placeholder="Código" value={formData.code} onChange={handleChange} required />
-            <input type="text" name="name" placeholder="Nombre" value={formData.name} onChange={handleChange} required />
-            <input type="text" name="description" placeholder="Descripción" value={formData.description} onChange={handleChange} />
-            <input type="number" name="price" placeholder="Precio" value={formData.price} onChange={handleChange} required />
-            <input type="text" name="category" placeholder="Categoría" value={formData.category} onChange={handleChange} />
-            <input type="number" name="stock" placeholder="Stock" value={formData.stock} onChange={handleChange} required />
+            <div>
+                <label htmlFor="code">Código:</label>
+                <input
+                    type="text"
+                    name="code"
+                    id="code"
+                    placeholder="Código"
+                    value={formData.code}
+                    onChange={handleChange}
+                    required
+                />
+            </div>
+
+            <div>
+                <label htmlFor="name">Nombre:</label>
+                <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Nombre"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                />
+            </div>
+
+            <div>
+                <label htmlFor="description">Descripción:</label>
+                <input
+                    type="text"
+                    name="description"
+                    id="description"
+                    placeholder="Descripción"
+                    value={formData.description}
+                    onChange={handleChange}
+                />
+            </div>
+
+            <div>
+                <label htmlFor="price">Precio: $</label>
+                <input
+                    type="number"
+                    name="price"
+                    id="price"
+                    placeholder="Precio"
+                    value={formData.price}
+                    onChange={handleChange}
+                    required
+                />
+            </div>
+
+            <div>
+                <label htmlFor="category">Categoría:</label>
+                <input
+                    type="text"
+                    name="category"
+                    id="category"
+                    placeholder="Categoría"
+                    value={formData.category}
+                    onChange={handleChange}
+                />
+            </div>
+
+            <div>
+                <label htmlFor="stock">Stock:</label>
+                <input
+                    type="number"
+                    name="stock"
+                    id="stock"
+                    placeholder="Stock"
+                    value={formData.stock}
+                    onChange={handleChange}
+                    required
+                />
+            </div>
+
             <button type="submit">Crear Producto</button>
         </form>
     );
