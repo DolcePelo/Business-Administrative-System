@@ -1,4 +1,4 @@
-// import './App.css';
+import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navar.js';
 import Home from './pages/Home/Home.js';
@@ -13,12 +13,14 @@ function App() {
       <div className="App">
         {/* Navbar que estará presente en todas las páginas */}
         <Navbar />
+        <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="/rental" element={<Rentals />} />
           <Route path="/sales" element={<Sales />} />
         </Routes>
+        </main>
       </div>
     </Router>
   );

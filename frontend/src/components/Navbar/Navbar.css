@@ -1,0 +1,93 @@
+
+/* Estilos para el contenedor de la barra de navegación */
+nav {
+    width: 250px;
+    background-color: #2C3E50; /* Azul oscuro */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    font-family: 'Arial', sans-serif; 
+    font-size: 1.5rem;
+}
+
+/* Eliminar el estilo por defecto de la lista */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+/* Estilos de los elementos de la lista */
+li {
+    width: 100%;
+    position: relative; /* Necesario para el efecto de subrayado */
+}
+
+/* Estilos para los enlaces */
+nav a {
+    display: block;
+    color: #ECF0F1; /* Color claro para los links */
+    text-decoration: none;
+    padding: 15px;
+    text-align: center; /* Asegura que el texto esté centrado */
+    width: 100%;
+    position: relative; /* Necesario para el pseudo-elemento */
+    overflow: hidden; /* Evita que el subrayado sobresalga */
+}
+
+/* Subrayado dentro del enlace */
+nav a:before {
+    content: '';
+    position: absolute;
+    bottom: 0; /* Ubicar en la parte inferior del enlace */
+    left: 0; /* Alinear al lado izquierdo */
+    width: 100%; /* Ancho completo del enlace */
+    height: 3px; /* Grosor del subrayado */
+    background-color: #92fd70; /* Verde pastel para el subrayado */
+    transform: scaleX(0); /* Inicialmente escondido */
+    transition: transform 0.3s ease; /* Animación suave */
+}
+
+nav a:hover:before {
+    transform: scaleX(1); /* Expandir al 100% */
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Color de fondo suave al hacer hover */
+}
+
+/* Estilo para el enlace activo */
+nav a.active {
+    background-color: #92fd70; /* Verde claro para marcar el activo */
+}
+
+/* Ajustes para el contenido principal para que no se superponga con el sidebar */
+main {
+    margin-left: 250px; /* Dejar espacio para la barra lateral */
+    padding: 20px;
+    flex-grow: 1; /* Dejar que el contenido principal ocupe el resto del espacio */
+    min-height: 100vh; /* Asegúrate de que el main tenga al menos la altura de la pantalla */
+}
+
+/* Opcional: Estilos responsivos para pantallas más pequeñas */
+@media (max-width: 768px) {
+    nav {
+        width: 200px;
+    }
+
+    nav a {
+        padding: 12px;
+    }
+
+    main {
+        margin-left: 200px;
+    }
+}
+
+
