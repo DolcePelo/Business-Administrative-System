@@ -9,6 +9,8 @@ const ProductList = ({ page, setPage }) => {
 
     // Función para eliminar un producto
     const deleteProduct = async (productId, productName) => {
+        const isConfirmed = window.confirm(`¿Estás seguro que querés borrar el producto ${productName}?`);
+        if (isConfirmed) {
         try {
             await axios.delete(`/products/${productId}`);
             alert(`${productName} eliminado de la base de datos`)
@@ -16,6 +18,9 @@ const ProductList = ({ page, setPage }) => {
             fetchProducts();
         } catch (error) {
             console.error("Error al borrar el producto", error);
+        }
+        } else {
+            alert('El producto no fue eliminado')
         }
     };
 
