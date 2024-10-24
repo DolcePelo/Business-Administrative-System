@@ -12,7 +12,7 @@ const Rentals = () => {
             <h1>Agregar Nueva Cancha</h1>
             <RentalForm refreshCourts={() => setPage(1)}  />
             <h1>Lista de Canchas</h1>
-            <RentalList page={page} setPage={setPage}/>
+            <RentalList page={page} setPage={setPage} refreshCourts={() => setPage(1)}/>
         </div>
     );
 };
