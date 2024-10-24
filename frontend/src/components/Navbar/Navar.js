@@ -3,19 +3,19 @@ import "./Navbar.css";
 
 const Navbar = () => {
     return (
-        <nav>
-            <ul>
-                <li>
-                    <Link to="/">Inicio</Link>
+        <nav className='navbar'>
+            <ul className="navbar-list">
+                <li className="navbar-item">
+                    <Link to="/" className="navbar-link">Inicio</Link>
                 </li>
-                <li>
-                    <Link to="/products">Productos</Link>
+                <li className="navbar-item">
+                    <Link to="/products" className="navbar-link">Productos</Link>
                 </li>
-                <li>
-                    <Link to="/rental">Alquileres</Link>
+                <li className="navbar-item">
+                    <Link to="/rental" className="navbar-link">Alquileres</Link>
                 </li>
-                <li>
-                    <Link to="/sales">Ventas</Link>
+                <li className="navbar-item">
+                    <Link to="/sales" className="navbar-link">Ventas</Link>
                 </li>
             </ul>
         </nav>

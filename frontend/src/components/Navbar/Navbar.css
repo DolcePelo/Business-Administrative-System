@@ -1,6 +1,5 @@
-
 /* Estilos para el contenedor de la barra de navegación */
-nav {
+.navbar {
     width: 250px;
     background-color: #2C3E50; /* Azul oscuro */
     height: 100vh; /* Ocupa toda la altura de la pantalla */
@@ -16,7 +15,7 @@ nav {
 }
 
 /* Eliminar el estilo por defecto de la lista */
-ul {
+.navbar-list {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -24,13 +23,13 @@ ul {
 }
 
 /* Estilos de los elementos de la lista */
-li {
+.navbar-item {
     width: 100%;
     position: relative; /* Necesario para el efecto de subrayado */
 }
 
 /* Estilos para los enlaces */
-nav a {
+.navbar-link {
     display: block;
     color: #ECF0F1; /* Color claro para los links */
     text-decoration: none;
@@ -42,7 +41,7 @@ nav a {
 }
 
 /* Subrayado dentro del enlace */
-nav a:before {
+.navbar-link:before {
     content: '';
     position: absolute;
     bottom: 0; /* Ubicar en la parte inferior del enlace */
@@ -54,16 +53,16 @@ nav a:before {
     transition: transform 0.3s ease; /* Animación suave */
 }
 
-nav a:hover:before {
+.navbar-link:hover:before {
     transform: scaleX(1); /* Expandir al 100% */
 }
 
-nav a:hover {
+.navbar-link:hover {
     background-color: rgba(255, 255, 255, 0.1); /* Color de fondo suave al hacer hover */
 }
 
 /* Estilo para el enlace activo */
-nav a.active {
+.navbar-link.active {
     background-color: #92fd70; /* Verde claro para marcar el activo */
 }
 
@@ -77,11 +76,11 @@ main {
 
 /* Opcional: Estilos responsivos para pantallas más pequeñas */
 @media (max-width: 768px) {
-    nav {
+    .navbar {
         width: 200px;
     }
 
-    nav a {
+    .navbar-link {
         padding: 12px;
     }
 
@@ -89,5 +88,3 @@ main {
         margin-left: 200px;
     }
 }
-
-

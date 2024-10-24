@@ -1,0 +1,80 @@
+.products-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin: 20px; 
+    padding: 20px;
+    background-color: #ecf0f1; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.products-container h1 {
+    margin-bottom: 20px; 
+    color: #2C3E50; 
+}
+
+.products-container form {
+    width: 100%; 
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    margin-bottom: 20px; 
+}
+
+.products-container input {
+    padding: 10px; 
+    border: 1px solid #bdc3c7; 
+    border-radius: 5px; 
+    font-size: 1rem; 
+}
+
+.products-container button {
+    background-color: #80e25d; /* Verde más oscuro por defecto */
+    color: white; /* Color del texto */
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 1rem; 
+    transition: background-color 0.3s; 
+}
+
+.products-container button:hover {
+    background-color: #92fd70; /* Verde más claro al hacer hover */
+}
+
+.product-list-container {
+    width: 100%; /* Asegura que la lista de productos ocupe todo el ancho */
+}
+
+.product-list-container ul {
+    list-style-type: none; /* Elimina los puntos de la lista */
+    padding: 0; /* Sin padding */
+}
+
+.product-list-container li {
+    display: flex; /* Utiliza flexbox para alinear elementos */
+    justify-content: space-between; /* Espacio entre el texto y los botones */
+    align-items: center; /* Centra verticalmente */
+    padding: 10px 0; /* Espaciado interno de los elementos de la lista */
+    border-bottom: 1px solid #bdc3c7; /* Línea divisoria */
+}
+
+.product-list-container .stockField {
+    display: flex; /* Mantiene el formulario de stock alineado */
+    align-items: center; /* Centra verticalmente el contenido */
+    margin-left: auto; /* Mueve el formulario a la derecha */
+}
+
+.product-list-container form {
+    display: flex; /* Alinea el formulario de stock */
+    gap: 10px; /* Espacio entre el campo de stock y el botón */
+    margin-left: auto; /* Mueve el formulario de stock a la derecha */
+}
+
+.product-list-container .action-buttons {
+    margin-left: auto; /* Mueve los botones a la derecha */
+    display: flex; /* Utiliza flexbox para alinear botones */
+    gap: 10px; /* Espacio entre botones */
+}

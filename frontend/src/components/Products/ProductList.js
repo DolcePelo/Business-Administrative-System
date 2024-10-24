@@ -11,16 +11,16 @@ const ProductList = ({ page, setPage }) => {
     const deleteProduct = async (productId, productName) => {
         const isConfirmed = window.confirm(`¿Estás seguro que querés borrar el producto ${productName}?`);
         if (isConfirmed) {
-        try {
-            await axios.delete(`/products/${productId}`);
-            alert(`${productName} eliminado de la base de datos`)
-            // Después de borrar, refrescamos la lista de productos
-            fetchProducts();
-        } catch (error) {
-            console.error("Error al borrar el producto", error);
-        }
+            try {
+                await axios.delete(`/products/${productId}`);
+                alert(`${productName} eliminado de la base de datos`);
+                // Después de borrar, refrescamos la lista de productos
+                fetchProducts();
+            } catch (error) {
+                console.error("Error al borrar el producto", error);
+            }
         } else {
-            alert('El producto no fue eliminado')
+            alert('El producto no fue eliminado');
         }
     };
 
@@ -47,13 +47,13 @@ const ProductList = ({ page, setPage }) => {
         if (page > 1) setPage(prevPage => prevPage - 1);
     };
 
-    //Función para manejar el click en el botón "Agregar Stock"
+    // Función para manejar el click en el botón "Agregar Stock"
     const toggleStockField = (productId) => {
         setShowStockFields(prev => ({
             ...prev,
             [productId]: !prev[productId]
         }));
-    }
+    };
 
     const handleStockSubmit = async (productId, e) => {
         e.preventDefault();
@@ -66,36 +66,37 @@ const ProductList = ({ page, setPage }) => {
         } catch (error) {
             console.error("Error al actualizar el stock", error);
         }
-    }
+    };
 
-    const handleStockChange  = (productId, e) => {
+    const handleStockChange = (productId, e) => {
         const value = e.target.value;
         setStockToAdd(prev => ({ ...prev, [productId]: value }));
-    }
+    };
 
     return (
-        <div>
+        <div className="product-list-container">
             <ul>
                 {products.map(product => (
                     <li key={product._id}>
                         {product.code} - {product.name} - ${product.price} - Stock: {product.stock} :
-                        <button onClick={() => deleteProduct(product._id, product.name)}>Borrar</button>
-                        <button onClick={() => toggleStockField(product._id)}>
-                            {showStockFields[product._id] ? "Ocultar Stock" : "Agregar Stock"}
-                        </button>
+                        <div style={{ marginLeft: 'auto', display: 'flex', gap: '10px' }}> {/* Contenedor para botones a la derecha */}
+                            <button onClick={() => deleteProduct(product._id, product.name)}>Borrar</button>
+                            <button onClick={() => toggleStockField(product._id)}>
+                                {showStockFields[product._id] ? "Ocultar Stock" : "Agregar Stock"}
+                            </button>
+                        </div>
                         {showStockFields[product._id] && ( // Mostrar campo de entrada solo si es visible
-                            <form className="stockField" style={{ display: 'inline-block' }}  onSubmit={(e) => handleStockSubmit(product._id, e)}>
+                            <form className="stockField" style={{ display: 'inline-block' }} onSubmit={(e) => handleStockSubmit(product._id, e)}>
                                 <div>
                                     <label htmlFor="stock">Stock:</label>
                                     <input type="number"
-                                    id="stock"
-                                    name="stock"
-                                    value={stockToAdd[product._id]}
-                                    onChange={(e) => handleStockChange(product._id, e)}
+                                        id="stock"
+                                        name="stock"
+                                        value={stockToAdd[product._id]}
+                                        onChange={(e) => handleStockChange(product._id, e)}
                                     />
                                     <button type="submit">OK</button>
                                 </div>
-                                
                             </form>
                         )}
                     </li>

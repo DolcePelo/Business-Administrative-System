@@ -577,3 +577,12 @@
 [2024-10-23T21:30:57.550Z] [32minfo[39m: GET /api/products?page=1 304 564ms
 [2024-10-23T21:30:57.615Z] [32minfo[39m: GET /api/products?page=1 304 58ms
 [2024-10-23T21:31:00.736Z] [32minfo[39m: GET /api/products?page=2 304 62ms
+[2024-10-23T22:38:41.797Z] [32minfo[39m: GET /api/rental?page=1 304 84ms
+[2024-10-23T22:38:41.861Z] [32minfo[39m: GET /api/rental?page=1 304 55ms
+[2024-10-23T22:39:08.790Z] [32minfo[39m: GET /api/rental?page=2 304 66ms
+[2024-10-23T22:40:32.648Z] [32minfo[39m: GET /api/products?page=1 304 64ms
+[2024-10-23T22:40:32.710Z] [32minfo[39m: GET /api/products?page=1 304 58ms
+[2024-10-23T22:40:33.108Z] [32minfo[39m: GET /api/rental?page=1 304 69ms
+[2024-10-23T22:40:33.163Z] [32minfo[39m: GET /api/rental?page=1 304 54ms
+[2024-10-23T22:40:38.606Z] [32minfo[39m: GET /api/rental?page=2 304 60ms
+[2024-10-23T22:41:00.979Z] [32minfo[39m: POST /api/rental 201 90ms
