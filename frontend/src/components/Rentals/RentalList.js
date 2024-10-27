@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import axios from '../../config/axiosConfig.js';
 
 const RentalList = ({ page, setPage, refreshCourts }) => {
@@ -47,12 +47,11 @@ const RentalList = ({ page, setPage, refreshCourts }) => {
     }
 
     return (
-        <div>
+        <div className="rental-list-container">
             <ul>
                 {rentals.map(rental => (
                     <li key={rental._id}>
                         <h3>{rental.courtType} - Cancha N° {rental.courtNumber}</h3>
-                        <button onClick={() => deleteRental(rental._id, rental.courtType, rental.courtNumber)} style={{ marginLeft: 'auto', display: 'flex', gap: '10px' }}>Borrar</button>
                         {rental.priceRanges.map((range, index) => (
                             <div key={index}>
                                 <ul>
@@ -65,13 +64,13 @@ const RentalList = ({ page, setPage, refreshCourts }) => {
                                     {range.prices.price90 && <li>90 min: ${range.prices.price90}</li>}
                                     {range.prices.price120 && <li>120 min: ${range.prices.price120}</li>}
                                 </ul>
-
                             </div>
                         ))}
+                        <button onClick={() => deleteRental(rental._id, rental.courtType, rental.courtNumber)}>Borrar</button>
                     </li>
                 ))}
             </ul>
-            <div>
+            <div className="pagination-container">
                 <button onClick={prevPage} disabled={page === 1}>Anterior</button>
                 <span>Pagina {page} de {totalPages}</span>
                 <button onClick={nextPage} disabled={page === totalPages}>Siguiente</button>

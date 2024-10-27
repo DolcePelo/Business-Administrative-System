@@ -89,7 +89,7 @@ const RentalForm = ({ refreshCourts }) => {
         <input type="number" name="courtNumber" value={formData.courtNumber} onChange={handleChange} required />
 
         {formData.priceRanges.map((range, index) => (
-            <div key={index}>
+            <div key={index}  className="rental-fields">
                 <label>Hora de Inicio</label>
                 <input type="time" name="startTime" value={range.startTime} onChange={(e) => handleChange(e, index, 'priceRanges')} required />
 

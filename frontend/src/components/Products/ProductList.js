@@ -78,7 +78,7 @@ const ProductList = ({ page, setPage }) => {
             <ul>
                 {products.map(product => (
                     <li key={product._id}>
-                        {product.code} - {product.name} - ${product.price} - Stock: {product.stock} :
+                        {product.code} - {product.name} - ${product.price} - Stock: {product.stock} 
                         <div style={{ marginLeft: 'auto', display: 'flex', gap: '10px' }}> {/* Contenedor para botones a la derecha */}
                             <button onClick={() => deleteProduct(product._id, product.name)}>Borrar</button>
                             <button onClick={() => toggleStockField(product._id)}>
@@ -102,7 +102,7 @@ const ProductList = ({ page, setPage }) => {
                     </li>
                 ))}
             </ul>
-            <div>
+            <div className="pagination-container">
                 <button onClick={prevPage} disabled={page === 1}>Anterior</button>
                 <span>Pagina {page} de {totalPages}</span>
                 <button onClick={nextPage} disabled={page === totalPages}>Siguiente</button>

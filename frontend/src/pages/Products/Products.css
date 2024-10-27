@@ -30,7 +30,7 @@
 }
 
 .products-container button {
-    background-color: #80e25d; /* Verde más oscuro por defecto */
+    background-color: #2ecc71; /* Verde más oscuro por defecto */
     color: white; /* Color del texto */
     padding: 10px 15px; 
     border: none; 
@@ -41,7 +41,7 @@
 }
 
 .products-container button:hover {
-    background-color: #92fd70; /* Verde más claro al hacer hover */
+    background-color: #58d68d ; /* Verde más claro al hacer hover */
 }
 
 .product-list-container {
@@ -77,4 +77,12 @@
     margin-left: auto; /* Mueve los botones a la derecha */
     display: flex; /* Utiliza flexbox para alinear botones */
     gap: 10px; /* Espacio entre botones */
+}
+
+.pagination-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
