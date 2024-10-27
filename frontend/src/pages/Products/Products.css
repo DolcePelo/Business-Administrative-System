@@ -79,6 +79,11 @@
     gap: 10px; /* Espacio entre botones */
 }
 
+.products-fields-container div {
+    display: flex;
+    flex-direction: column;
+}
+
 .pagination-container {
     margin-top: 1rem;
     display: flex;

@@ -37,7 +37,7 @@ const ProductForm = ({ refreshProducts }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="products-fields-container">
             <div>
                 <label htmlFor="code">Código:</label>
                 <input
