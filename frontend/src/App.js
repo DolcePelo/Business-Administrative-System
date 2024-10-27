@@ -5,6 +5,7 @@ import Home from './pages/Home/Home.js';
 import Products from './pages/Products/Products.js';
 import Rentals from './pages/Rentals/Rentals.js';
 import Sales from './pages/Sales/Sales.js';
+import Categorias from './pages/Categorias/Categorias.js';
 // import Login from './pages/Login';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/rental" element={<Rentals />} />
           <Route path="/sales" element={<Sales />} />
+          <Route path="/categorias" element={<Categorias />} />
         </Routes>
         </main>
       </div>
