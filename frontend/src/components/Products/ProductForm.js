@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "../../config/axiosConfig.js";
 
-const ProductForm = ({ refreshProducts }) => {
+const ProductForm = ({ categorias, refreshProducts }) => {
     const [formData, setFormData] = useState({
         code: "",
         name: "",
@@ -91,14 +91,20 @@ const ProductForm = ({ refreshProducts }) => {
 
             <div>
                 <label htmlFor="category">Categoría:</label>
-                <input
-                    type="text"
+                <select
                     name="category"
                     id="category"
-                    placeholder="Categoría"
                     value={formData.category}
                     onChange={handleChange}
-                />
+                    required
+                >
+                    <option value="">Seleccionar categoría</option>
+                    {categorias.map((cat) => (
+                        <option key={cat._id} value={cat._id}>
+                            {cat.name}
+                        </option>
+                    ))}
+                </select>
             </div>
 
             <div>

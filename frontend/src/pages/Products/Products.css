@@ -22,7 +22,7 @@
     margin-bottom: 20px; 
 }
 
-.products-container input {
+.products-container input, .products-container select {
     padding: 10px; 
     border: 1px solid #bdc3c7; 
     border-radius: 5px; 
