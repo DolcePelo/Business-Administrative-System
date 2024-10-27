@@ -12,3 +12,8 @@
 [2024-10-13T18:51:25.317Z] [31merror[39m: Venta o Producto no encontrado
 [2024-10-13T18:53:56.468Z] [31merror[39m: Venta o Producto no encontrado
 [2024-10-13T18:55:04.505Z] [31merror[39m: Venta o Producto no encontrado
+[2024-10-27T15:37:44.749Z] [31merror[39m: error al guardar la categoria Cannot access 'category' before initialization
+[2024-10-27T16:56:49.037Z] [31merror[39m: error al guardar la categoria Cannot access 'category' before initialization
+[2024-10-27T16:57:00.750Z] [31merror[39m: error al guardar la categoria Cannot access 'category' before initialization
+[2024-10-27T16:57:29.674Z] [31merror[39m: error al guardar la categoria Cannot access 'category' before initialization
+[2024-10-27T17:00:28.513Z] [31merror[39m: error al obtener la categoria por id Cannot access 'category' before initialization

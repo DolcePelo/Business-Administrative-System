@@ -1,9 +1,9 @@
 import express from "express";
-import mongoose from "mongoose";
 import dotenv from "dotenv";
 import productRouter from "./routes/products.js";
 import salesRouter from "./routes/sales.js";
 import rentalRouter from "./routes/rental.js";
+import categoryRouter from "./routes/category.js";
 import MongoStore from "connect-mongo";
 import session from "express-session";
 import cookieParser from "cookie-parser";
@@ -65,6 +65,7 @@ app.use("/api/products", productRouter);
 app.use("/api/sales", salesRouter);
 app.use("/api/rental", rentalRouter);
 app.use("/api/session", sessionRouter);
+app.use("/api/category", categoryRouter);
 
 const server = app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
