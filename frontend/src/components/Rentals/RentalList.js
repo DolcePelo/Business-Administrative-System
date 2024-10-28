@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from '../../config/axiosConfig.js';
+import Swal from "sweetalert2";
 
 const RentalList = ({ page, setPage, refreshCourts }) => {
     const [rentals, setRentals] = useState([]);
@@ -32,17 +33,31 @@ const RentalList = ({ page, setPage, refreshCourts }) => {
     };
 
     const deleteRental = async (rentalId, rentalName, courtNumber) => {
-        const isConfirmed = window.confirm(`¿Estás seguro que querés borrar el producto ${rentalName} ${courtNumber}?`);
-        if (isConfirmed) {
+        const result = 
+        await Swal.fire({
+            title: '¿Estás seguro de eliminar la cancha?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar',
+        });
+        
+        if (result.isConfirmed) {
             try {
                 await axios.delete(`/rental/${rentalId}`);
-                alert(`Eliminado de la base de datos: ${rentalName} ${courtNumber}`);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Cancha eliminada',
+                    text: `${rentalName} ${courtNumber} ha sido eliminada correctamente.`,
+                })
                 refreshCourts();
             } catch (error) {
                 console.error("Error al obtener las canchas", error);
             }
         } else {
-            alert('El producto no fue eliminado');
+            Swal.fire('Eliminación cancelada', '', 'info');
         }
     }
 

@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './Categorias.css';
 import axios from '../../config/axiosConfig.js';
+import Swal from "sweetalert2";
 
 const Categorias = ({ categorias, setCategorias }) => {
     const [categoria, setCategoria] = useState("");
@@ -15,6 +16,13 @@ const Categorias = ({ categorias, setCategorias }) => {
             const response = await axios.post('/category', { name: categoria });
             setCategorias([...categorias, response.data.data]);
             setCategoria("");
+            Swal.fire({
+                position: 'top-end',
+                title: 'Categoria creada con exito',
+                icon: 'success',
+                timer: 1500,
+            });
+
         } catch (error) {
             console.error("error al crear la categoria", error);
         }

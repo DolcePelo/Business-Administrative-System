@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "../../config/axiosConfig.js";
+import Swal from "sweetalert2";
 
 
 const RentalForm = ({ refreshCourts }) => {
@@ -57,7 +58,12 @@ const RentalForm = ({ refreshCourts }) => {
         e.preventDefault();
         try {
             await axios.post("/rental", formData);
-            alert("Cancha creada con éxito");
+            Swal.fire({
+                title: "Cancha creada con éxito!",
+                text: "La cancha ha sido creada con éxito",
+                icon: "success",
+                confirmButtonText: "Aceptar",
+            })
             //limpiar los campos
             setFormData({
                 courtType: "",

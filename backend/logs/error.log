@@ -17,3 +17,4 @@
 [2024-10-27T16:57:00.750Z] [31merror[39m: error al guardar la categoria Cannot access 'category' before initialization
 [2024-10-27T16:57:29.674Z] [31merror[39m: error al guardar la categoria Cannot access 'category' before initialization
 [2024-10-27T17:00:28.513Z] [31merror[39m: error al obtener la categoria por id Cannot access 'category' before initialization
+[2024-10-27T17:23:34.117Z] [31merror[39m: error al eliminar la categoria logger is not a function

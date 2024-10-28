@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import axios from '../../config/axiosConfig.js';
+import Swal from "sweetalert2";
 
 const ProductList = ({ page, setPage }) => {
     const [products, setProducts] = useState([]);
@@ -9,18 +10,32 @@ const ProductList = ({ page, setPage }) => {
 
     // Función para eliminar un producto
     const deleteProduct = async (productId, productName) => {
-        const isConfirmed = window.confirm(`¿Estás seguro que querés borrar el producto ${productName}?`);
-        if (isConfirmed) {
+        const result = 
+        await Swal.fire({
+            title: '¿Estás seguro de eliminar el producto?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar',
+        });
+
+        if (result.isConfirmed) {
             try {
                 await axios.delete(`/products/${productId}`);
-                alert(`${productName} eliminado de la base de datos`);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Producto eliminado',
+                    text: `El producto ${productName} ha sido eliminado correctamente.`,
+                })
                 // Después de borrar, refrescamos la lista de productos
                 fetchProducts();
             } catch (error) {
                 console.error("Error al borrar el producto", error);
             }
         } else {
-            alert('El producto no fue eliminado');
+            Swal.fire('Eliminación cancelada', '', 'info');
         }
     };
 

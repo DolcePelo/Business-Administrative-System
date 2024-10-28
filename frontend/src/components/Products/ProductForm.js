@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "../../config/axiosConfig.js";
+import Swal from "sweetalert2";
 
 const ProductForm = ({ categorias, refreshProducts }) => {
     const [formData, setFormData] = useState({
@@ -31,6 +32,11 @@ const ProductForm = ({ categorias, refreshProducts }) => {
             });
 
             refreshProducts();
+            Swal.fire({
+                title: "Producto creado con éxito",
+                text: "El producto ha sido creado con éxito",
+                icon: "success",
+            })
         } catch (error) {
             console.error("Error creando el producto", error);
         }
