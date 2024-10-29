@@ -29,16 +29,31 @@ const Categorias = ({ categorias, setCategorias }) => {
     }
 
     const deleteCat = async (catId, catName) => {
-        const isConfirmed = window.confirm(`¿Estás seguro que querés borrar la categoria ${catName}?`);
-        if (isConfirmed) {
+        const result = 
+        await Swal.fire({
+            title: '¿Estás seguro de eliminar la categoria?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar',
+        });
+
+        if (result.isConfirmed) {
             try {
                 await axios.delete(`/category/${catId}`);
                 setCategorias(categorias.filter((cat) => cat._id !== catId));
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Categoria eliminada con exito',
+                    text: `La categoria ${catName} ha sido eliminado correctamente.`,
+                })
             } catch (error) {
                 console.error("error al borrar la categoria", error);
             }
         } else {
-            alert('La categoria no fue eliminada')
+            Swal.fire('Eliminación cancelada', '', 'info');
         }
     }
 

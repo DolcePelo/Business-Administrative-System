@@ -1059,3 +1059,7 @@
 [2024-10-27T19:33:47.749Z] [32minfo[39m: GET /api/products?page=1 304 54ms
 [2024-10-27T19:33:48.086Z] [32minfo[39m: GET /api/rental?page=1 304 57ms
 [2024-10-27T19:33:48.141Z] [32minfo[39m: GET /api/rental?page=1 304 54ms
+[2024-10-29T11:30:48.654Z] [32minfo[39m: GET /api/category 304 317ms
+[2024-10-29T11:30:48.829Z] [32minfo[39m: GET /api/category 304 158ms
+[2024-10-29T11:31:07.606Z] [32minfo[39m: GET /api/products?page=1 304 45ms
+[2024-10-29T11:31:08.132Z] [32minfo[39m: GET /api/products?page=1 304 523ms
