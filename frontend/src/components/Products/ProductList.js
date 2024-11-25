@@ -1,66 +1,11 @@
-import { useEffect, useState, useCallback } from "react";
-import axios from '../../config/axiosConfig.js';
-import Swal from "sweetalert2";
+import { useState } from "react";
+import { useProductContext } from "../../context/ProductContext";
 
-const ProductList = ({ page, setPage }) => {
-    const [products, setProducts] = useState([]);
-    const [totalPages, setTotalPages] = useState(1);
+
+const ProductList = () => {
+    const { products, page, totalPages, setPage, deleteProduct, updateStock } = useProductContext();
     const [showStockFields, setShowStockFields] = useState({});
     const [stockToAdd, setStockToAdd] = useState({});
-
-    // Función para eliminar un producto
-    const deleteProduct = async (productId, productName) => {
-        const result = 
-        await Swal.fire({
-            title: '¿Estás seguro de eliminar el producto?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, eliminar',
-            cancelButtonText: 'Cancelar',
-        });
-
-        if (result.isConfirmed) {
-            try {
-                await axios.delete(`/products/${productId}`);
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Producto eliminado',
-                    text: `El producto ${productName} ha sido eliminado correctamente.`,
-                })
-                // Después de borrar, refrescamos la lista de productos
-                fetchProducts();
-            } catch (error) {
-                console.error("Error al borrar el producto", error);
-            }
-        } else {
-            Swal.fire('Eliminación cancelada', '', 'info');
-        }
-    };
-
-    // Traer los productos
-    const fetchProducts = useCallback(async () => {
-        try {
-            const response = await axios.get(`/products?page=${page}`);
-            setProducts(response.data.data.docs);
-            setTotalPages(response.data.data.totalPages);
-        } catch (error) {
-            console.error("Error al obtener los productos", error);
-        }
-    }, [page]);
-
-    useEffect(() => {
-        fetchProducts();
-    }, [fetchProducts]);
-
-    const nextPage = () => {
-        if (page < totalPages) setPage(prevPage => prevPage + 1);
-    };
-
-    const prevPage = () => {
-        if (page > 1) setPage(prevPage => prevPage - 1);
-    };
 
     // Función para manejar el click en el botón "Agregar Stock"
     const toggleStockField = (productId) => {
@@ -73,14 +18,8 @@ const ProductList = ({ page, setPage }) => {
     const handleStockSubmit = async (productId, e) => {
         e.preventDefault();
         const stockAmount = parseInt(stockToAdd[productId], 10) || 0;
-        try {
-            await axios.put(`/products/${productId}/stock`, { stock: stockAmount });
-            alert(`Stock actualizado para el producto con ID: ${productId}`);
-            fetchProducts();
-            setStockToAdd(prev => ({ ...prev, [productId]: "" }));
-        } catch (error) {
-            console.error("Error al actualizar el stock", error);
-        }
+        await updateStock(productId, stockAmount);
+        setStockToAdd(prev => ({ ...prev, [productId]: "" }));
     };
 
     const handleStockChange = (productId, e) => {
@@ -88,12 +27,20 @@ const ProductList = ({ page, setPage }) => {
         setStockToAdd(prev => ({ ...prev, [productId]: value }));
     };
 
+    const nextPage = () => {
+        if (page < totalPages) setPage(prevPage => prevPage + 1);
+    };
+
+    const prevPage = () => {
+        if (page > 1) setPage(prevPage => prevPage - 1);
+    };
+
     return (
         <div className="product-list-container">
             <ul>
                 {products.map(product => (
                     <li key={product._id}>
-                        {product.code} - {product.name} - ${product.price} - Stock: {product.stock} 
+                        {product.code} - {product.name} - ${product.price} - Stock: {product.stock}
                         <div style={{ marginLeft: 'auto', display: 'flex', gap: '10px' }}> {/* Contenedor para botones a la derecha */}
                             <button onClick={() => deleteProduct(product._id, product.name)}>Borrar</button>
                             <button onClick={() => toggleStockField(product._id)}>
